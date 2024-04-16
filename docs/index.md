@@ -68,6 +68,7 @@
     9.  Add `dictionary.csv` to `data-raw/` with columns:
         - directory, file_name, variable_name, variable_type,
           description
+          - use this function: https://github.com/openwashdata-dev/openwashdata/issues/5
     10. Once data reaches tidy state, fill `dictionary.csv` for each
         dataset and variable
     11. Add, commit and push all changes to GitHub
