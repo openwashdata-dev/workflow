@@ -249,3 +249,12 @@
         - Non-standard files/directories found at top level:
           - Fix:
             https://stackoverflow.com/questions/48955103/non-standard-file-directory-found-at-top-level-readme-rmd-persists-even-after
+8. **After-Release**
+   - Update the openwashdata google sheet spreadsheet on the data entry
+   - Update the openwashdata website by syncing the sheet
+   - Create an issue in newsletter repository or similarly to prepare announcement for the next issue
+   - Refine the github repository profile page
+     - Add description
+     - Add keywords
+   - Share with the data donators 
+   - Examine and close any remain issues
