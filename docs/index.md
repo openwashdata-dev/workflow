@@ -258,3 +258,4 @@
      - Add keywords
    - Share with the data donators 
    - Examine and close any remain issues
+   - (Optional) Transfer maintainer role when the developer can no longer maintain the package
