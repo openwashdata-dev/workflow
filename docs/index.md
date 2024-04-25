@@ -46,25 +46,10 @@
         - `git branch -M main`
         - `git push -u origin main`
     5.  Add directory for raw-data to project
-        - In Console, execute
-          - `library(devtools)`
-          - `use_data_raw()`
-            - This will create a `data-raw/` subdirectory.
-              - contains a DATASET.R file
-                - rename to `data_processing.R`
-    6.  Add, commit and push all changes to GitHub
-    7.  On GitHub, open issue 1 for adding data to `data-raw/` folder
-        - use an issue template (example:
-          https://github.com/openwashdata/cbssuitabilityhaiti/issues/1#issue-1657507593)
-    8.  Prepare import of data and export of tidy raw data in
-        `data_processing.R` file
-        - At the end of file add export for CSV and XLSX
-          - usethis::use_data(DATASET, overwrite = TRUE)
-          - fs::dir_create(here::here(“inst”, “extdata”))
-          - write_csv(DATASET, here::here(“inst”, “extdata”,
-            “DATASET.csv”))
-          - openxlsx::write.xlsx(DATASET, here::here(“inst”, “extdata”,
-            “DATASET.xlsx”))
+        - In Console, execute `setup_rawdata()`
+        - Add, commit and push all changes to GitHub
+        - On GitHub, open issue 1 for adding data to `data-raw/` folder
+            - use an issue template (example: https://github.com/openwashdata/cbssuitabilityhaiti/issues/1#issue-1657507593)
     9.  Add `dictionary.csv` to `data-raw/` with columns:
         - directory, file_name, variable_name, variable_type,
           description
