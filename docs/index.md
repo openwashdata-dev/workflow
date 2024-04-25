@@ -106,27 +106,21 @@
           - https://r-pkgs.org/description.html
     18. Add dependencies (not optional if vignettes are used) -
         `use_package("dplyr")` - `use_package("ggplot2", "Suggests")`
-    19. Complete `DESCRIPTION` file - Add author
-        - `javascript use_author(   given = "Lars",   family = "Schöbitz",   role = c("aut", "cre"),   email = "lschoebitz(at)ethz.ch",   comment = c(ORCID = "0000-0003-2196-5015") )`
-          - Add license
-        - `usethis::use_cc_by()`
-          - Add language
-        - `Language: en-GB`
-          - Add date
-        - `desc::desc_set("Date", Sys.Date(), file = "DESCRIPTION")`
-    20. Use `devtools` to load, document, check, and install - Use
+    19. Complete `DESCRIPTION` file by running `washr::update_description()`
+    20. - Add author(s): `use_author(   given = "Lars",   family = "Schöbitz",   role = c("aut", "cre"),   email = "lschoebitz(at)ethz.ch",   comment = c(ORCID = "0000-0003-2196-5015") )`
+    21. Use `devtools` to load, document, check, and install - Use
         keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-    21. Add `CITATION.cff` - use the \[\[{cffr}\]\] Package once the
+    22. Add `CITATION.cff` - use the \[\[{cffr}\]\] Package once the
         Description file is complete - current \#gist to be turned into
         function for \[\[{openwashdata}\]\] R package
         - https://gist.github.com/larnsce/dccdb26762837618c6dda82a5614b584
         - needs doi paramater, which will only be used after first
           release to Zenodo
-    22. Create a rmd README for package - `usethis::use_readme_rmd()`
+    23. Create a rmd README for package - `usethis::use_readme_rmd()`
         - Outline template
           - https://github.com/Global-Health-Engineering/durbanplasticwaste22/blob/main/README.Rmd
         - Write \[\[{openwashdata}\]\] R function to generate download
@@ -143,30 +137,30 @@
             - ) \|\>
             - knitr::kable()
           - `devtools::build_readme()`
-    23. Add, commit and push all changes to GitHub - On GitHub, open
+    24. Add, commit and push all changes to GitHub - On GitHub, open
         issue 5 to define who writes up which parts of the README
-    24. Create an examples article for the package -
+    25. Create an examples article for the package -
         `usethis::use_article("examples")` -
         `devtools::build_rmd("vignettes/articles/examples.Rmd")` -
         Resources
         - https://r-pkgs.org/vignettes.html#sec-vignettes-workflow-writing
           - Prepare one or two data visualisation or table examples
-    25. Add formal dependencies from Vignette (not necessary for article
+    26. Add formal dependencies from Vignette (not necessary for article
         vignette?) - Any package used in a vignette must be a formal
         dependency, i.e. it must be listed in Imports or Suggests in
         DESCRIPTION
         - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
-    26. Use `devtools` to load, document, check, and install - Use
+    27. Use `devtools` to load, document, check, and install - Use
         keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-    27. Add automated CMD BUILD check -
+    28. Add automated CMD BUILD check -
         `usethis::use_github_action_check_standard()?`
         - checks build for Mac, Windows, Linux
-    28. Create new branch - `pkgdown`
-    29. Setup pkgdown configuration and github actions -
+    29. Create new branch - `pkgdown`
+    30. Setup pkgdown configuration and github actions -
         `usethis::use_pkgdown` - open `_pkgdown.yml`
         - add github pages URL
         - add plausible script (plausible for openwashdata to be setup)
@@ -175,9 +169,9 @@
             - includes:
               - in_header: \|
                 - <script defer data-domain="openwashdata.github.io" src="https://plausible.io/js/script.js"></script>
-    30. Build pkgdown website - `pkgdown::build_site()`
-    31. Add, commit and push all changes to GitHub
-    32. Edit Home Index - use this as template:
+    31. Build pkgdown website - `pkgdown::build_site()`
+    32. Add, commit and push all changes to GitHub
+    33. Edit Home Index - use this as template:
         https://github.com/Global-Health-Engineering/durbanplasticwaste/blob/main/\_pkgdown.yml
         - consider writing pkgdown template for this:
           https://github.com/openwashdata/book/issues/16
