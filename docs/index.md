@@ -10,6 +10,11 @@
         - have no spaces or dashes
         - be a combination of two to three words
         - identify location and/or theme/topic
+      - write down description
+        - One-sentence description
+            - Example: Groundwater analysis from 2016 in Kwale, Kenya
+        - Detailed description
+            - Example: The goal of `grdwtrsmpkwale` is to provide datasets for research and planning of water and solid waste management in Kwale, Kenya. This package includes water anlaysis data collected in 2016 combined with the geospatial data from the collection points.
 2.  **Open GitHub**
     1.  If data donator has not opened an issue on [openwashdata/data
         issue tracker](https://github.com/openwashdata/data/issues), do
