@@ -1,4 +1,5 @@
 
+## Data repository set-up
 
 1.  **Email (probably)**
     - To get started, please
@@ -52,44 +53,35 @@
         - `git push -u origin main`
    
     5. Install openwashdata R package - `devtools::install_github("openwashdata/washr")`
-    6. Add directory for raw-data to project
+
+## Data Cleaning
+1. Add directory for raw-data to project
         - In Console, execute `washr::setup_rawdata()`
         - Add, commit and push all changes to GitHub
         - On GitHub, open issue 1 for adding data to `data-raw/` folder
             - use an issue template (example: https://github.com/openwashdata/cbssuitabilityhaiti/issues/1#issue-1657507593)
-    9.  Work on `data-raw/data_processing.R` to clean raw data and export tidy data
-    10. Once data reaches tidy state, in Console, execute `setup_dictionary()`
-    11. Fill the description in `dictionary.csv` for each dataset and variable
-    12. Add, commit and push all changes to GitHub
-    13. On GitHub, open issue 3 for cross-checking in with data donator for correct understanding of variables in `dictionary.csv`
-    14. Initiate documentation folder for writing up metadata and documentation for objects
-        - Create new folder R: `usethis::use_r`
-    16. Write documentation in `\R` folder using \#\[\[{roxygen}\]\]
-        comments - Include a title - Include a description - If
-        `dictionary.csv` is complete use function
-        `generate_roxygen_docs` of \[\[{openwashdata}\]\] R package to
-        document variables
-        - https://github.com/openwashdata/openwashdata/blob/main/R/generate_roxygen_docs.R
-          - Example
-        - https://github.com/Global-Health-Engineering/durbanplasticwaste22/blob/main/R/litterboom_counts.R
-        - Object has to be quoted at the end of roxygen comments
-          - Resource
-        - https://r-pkgs.org/data.html#sec-documenting-data
-          - Watch out
-        - Function overwrites current content. Copy title and
-          description.
-    17. Add an additional package documentation to Package -
-        `usethis::use_package_doc()` - If data documentation name is the
-        same as package name, then add the following to the \*-package.R
-        file
+2.  Work on `data-raw/data_processing.R` to clean raw data and export tidy data
+3.  Once data reaches tidy state, in Console, execute `setup_dictionary()`
+  1. Fill the description in `dictionary.csv` for each dataset and variable
+4. Add, commit and push all changes to GitHub
+5. On GitHub, open issue 3 for cross-checking in with data donator for correct understanding of variables in `dictionary.csv`
+6. Initiate documentation folder for writing up metadata and documentation for objects
+   - Create new folder R: `usethis::use_r()`
+7. Write documentation in `\R` folder using \#\[\[{roxygen}\]\] comments by executing in console: `washr::setup_roxygen()`
+8. Add an additional package documentation to Package
+        - `usethis::use_package_doc()`
+        - If data documentation name is the same as package name, then add the following to the \*-package.R file
         - \#’ @aliases testduplicate-package
         - sources:
           - https://github.com/DavisVaughan/testduplicate/blob/7c4c6ce09b3131d966cda91c6fb6a67fa6e0bbb5/R/testduplicate-package.R#L2
           - https://github.com/tidymodels/hardhat/issues/130#issuecomment-622438758
-          - Resource
-        - https://roxygen2.r-lib.org/articles/rd-other.html#datasets
-    18. Add, commit and push all changes to GitHub - On GitHub, setup
-        issue 4 with details to write up `DESCRIPTION` file
+        - Resource
+          - https://roxygen2.r-lib.org/articles/rd-other.html#datasets
+9. Add, commit and push all changes to GitHub
+    
+## Complete package needed files
+### DESCRIPTION
+1. On GitHub, set up issue 4 with details to write up `DESCRIPTION` file
         - Template
         - List
           - Title
@@ -101,26 +93,23 @@
             - Roles
               - cre = maintainer
               - aut = significant contributions
-              - ctb = contributor with smaller contributios
+              - ctb = contributor with smaller contributions
         - Resource
           - https://r-pkgs.org/description.html
-    19. Add dependencies (not optional if vignettes are used) -
+    21. Add dependencies (not optional if vignettes are used) -
         `use_package("dplyr")` - `use_package("ggplot2", "Suggests")`
-    20. Complete `DESCRIPTION` file by running `washr::update_description()`
-    21. - Add author(s): `use_author(   given = "Lars",   family = "Schöbitz",   role = c("aut", "cre"),   email = "lschoebitz(at)ethz.ch",   comment = c(ORCID = "0000-0003-2196-5015") )`
-    22. Use `devtools` to load, document, check, and install - Use
+2. Complete `DESCRIPTION` file by executing in Console: `washr::update_description()`
+3. - Add author(s): `use_author(   given = "Lars",   family = "Schöbitz",   role = c("aut", "cre"),   email = "lschoebitz(at)ethz.ch",   comment = c(ORCID = "0000-0003-2196-5015") )`
+4. Use `devtools` to load, document, check, and install - Use
         keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-    23. Add `CITATION.cff` - use the \[\[{cffr}\]\] Package once the
-        Description file is complete - current \#gist to be turned into
-        function for \[\[{openwashdata}\]\] R package
-        - https://gist.github.com/larnsce/dccdb26762837618c6dda82a5614b584
-        - needs doi paramater, which will only be used after first
-          release to Zenodo
-    24. Create a rmd README for package - `usethis::use_readme_rmd()`
+   
+### README
+
+1. Create a rmd README for package - `usethis::use_readme_rmd()`
         - Outline template
           - https://github.com/Global-Health-Engineering/durbanplasticwaste22/blob/main/README.Rmd
         - Write \[\[{openwashdata}\]\] R function to generate download
@@ -137,30 +126,31 @@
             - ) \|\>
             - knitr::kable()
           - `devtools::build_readme()`
-    25. Add, commit and push all changes to GitHub - On GitHub, open
+2. Add, commit and push all changes to GitHub - On GitHub, open
         issue 5 to define who writes up which parts of the README
-    26. Create an examples article for the package -
+3. Create an examples article for the package -
         `usethis::use_article("examples")` -
         `devtools::build_rmd("vignettes/articles/examples.Rmd")` -
         Resources
         - https://r-pkgs.org/vignettes.html#sec-vignettes-workflow-writing
           - Prepare one or two data visualisation or table examples
-    27. Add formal dependencies from Vignette (not necessary for article
+4. Add formal dependencies from Vignette (not necessary for article
         vignette?) - Any package used in a vignette must be a formal
         dependency, i.e. it must be listed in Imports or Suggests in
         DESCRIPTION
         - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
-    28. Use `devtools` to load, document, check, and install - Use
+5. Use `devtools` to load, document, check, and install - Use
         keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-    29. Add automated CMD BUILD check -
+6. Add automated CMD BUILD check -
         `usethis::use_github_action_check_standard()?`
         - checks build for Mac, Windows, Linux
-    30. Create new branch - `pkgdown`
-    31. Setup pkgdown configuration and github actions -
+### Pkgdown Website
+1. Create new branch - `pkgdown`
+2. Setup pkgdown configuration and github actions -
         `usethis::use_pkgdown` - open `_pkgdown.yml`
         - add github pages URL
         - add plausible script (plausible for openwashdata to be setup)
@@ -169,16 +159,18 @@
             - includes:
               - in_header: \|
                 - <script defer data-domain="openwashdata.github.io" src="https://plausible.io/js/script.js"></script>
-    32. Build pkgdown website - `pkgdown::build_site()`
-    33. Add, commit and push all changes to GitHub
-    34. Edit Home Index - use this as template:
-        https://github.com/Global-Health-Engineering/durbanplasticwaste/blob/main/\_pkgdown.yml
-        - consider writing pkgdown template for this:
-          https://github.com/openwashdata/book/issues/16
-          - https://github.com/tidyverse/tidytemplate
-          - https://pkgdown.r-lib.org/articles/pkgdown.html#home-page
-          - explore: https://pkgdown.r-lib.org/articles/customise.html
-4.  **Open Zenodo**
+3. Build pkgdown website - `pkgdown::build_site()`
+4. Add, commit and push all changes to GitHub
+5. Edit Home Index
+   - use this as template: https://github.com/Global-Health-Engineering/durbanplasticwaste/blob/main/\_pkgdown.yml
+   - consider writing pkgdown template for this:https://github.com/openwashdata/book/issues/16
+     - https://github.com/tidyverse/tidytemplate
+     - https://pkgdown.r-lib.org/articles/pkgdown.html#home-page
+     - explore: https://pkgdown.r-lib.org/articles/customise.html
+          
+## Package Release
+
+1.  **Open Zenodo**
     - login with GitHub account
     - click on dropdown next to email address in top right
       - select GitHub
@@ -187,8 +179,7 @@
       - click on repo link
     - create release v0.0.1 on GitHub
       - initial package release
-    - Go back to [the Zenodo GitHub overview
-      page](https://zenodo.org/account/settings/github/)
+    - Go back to [the Zenodo GitHub overview page](https://zenodo.org/account/settings/github/)
       - Get the DOI Badge
     - Open the entry on Zenodo
       - Click on Edit
@@ -205,7 +196,12 @@
           - is compiled/created by this upload
           - Dataset
       - Get the DOI
-5.  **Open RStudio IDE**
+2. Add `CITATION.cff`
+        - use the \[\[{cffr}\]\] Package once the Description file is complete
+        - current \#gist to be turned into a function for \[\[{openwashdata}\]\] R package
+          - https://gist.github.com/larnsce/dccdb26762837618c6dda82a5614b584
+        - needs doi parameter, which will only be used after first release to Zenodo
+3.  **Open RStudio IDE**
     - Add DOI badge to repository README.md
     - Edit DESCRIPTION
       - edit version number
@@ -228,7 +224,8 @@
         - Non-standard files/directories found at top level:
           - Fix:
             https://stackoverflow.com/questions/48955103/non-standard-file-directory-found-at-top-level-readme-rmd-persists-even-after
-8. **After-Release**
+## After-Release
+
    - Update the openwashdata google sheet spreadsheet on the data entry
    - Update the openwashdata website by syncing the sheet
    - Create an issue in newsletter repository or similarly to prepare announcement for the next issue
