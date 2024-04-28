@@ -56,12 +56,12 @@
 
 ## Data Cleaning
 1. Add directory for raw-data to project
-        - In Console, execute `washr::setup_rawdata()`
-        - Add, commit and push all changes to GitHub
-        - On GitHub, open issue 1 for adding data to `data-raw/` folder
-            - use an issue template (example: https://github.com/openwashdata/cbssuitabilityhaiti/issues/1#issue-1657507593)
+   - In Console, execute `washr::setup_rawdata()`
+    - Add, commit and push all changes to GitHub
+    - On GitHub, open issue 1 for adding data to `data-raw/` folder
+      - use an issue template (example: https://github.com/openwashdata/cbssuitabilityhaiti/issues/1#issue-1657507593)
 2.  Work on `data-raw/data_processing.R` to clean raw data and export tidy data
-3.  Once data reaches tidy state, in Console, execute `setup_dictionary()`
+3.  Once data reaches tidy state, in Console, execute `washr::setup_dictionary()`
   1. Fill the description in `dictionary.csv` for each dataset and variable
 4. Add, commit and push all changes to GitHub
 5. On GitHub, open issue 3 for cross-checking in with data donator for correct understanding of variables in `dictionary.csv`
@@ -69,43 +69,38 @@
    - Create new folder R: `usethis::use_r()`
 7. Write documentation in `\R` folder using \#\[\[{roxygen}\]\] comments by executing in console: `washr::setup_roxygen()`
 8. Add an additional package documentation to Package
-        - `usethis::use_package_doc()`
-        - If data documentation name is the same as package name, then add the following to the \*-package.R file
-        - \#’ @aliases testduplicate-package
-        - sources:
+   - `usethis::use_package_doc()`
+   - If data documentation name is the same as package name, then add the following to the \*-package.R file
+   - \#’ @aliases testduplicate-package
+     - sources:
           - https://github.com/DavisVaughan/testduplicate/blob/7c4c6ce09b3131d966cda91c6fb6a67fa6e0bbb5/R/testduplicate-package.R#L2
           - https://github.com/tidymodels/hardhat/issues/130#issuecomment-622438758
-        - Resource
+      - Resource
           - https://roxygen2.r-lib.org/articles/rd-other.html#datasets
 9. Add, commit and push all changes to GitHub
     
 ## Complete package needed files
 ### DESCRIPTION
-1. On GitHub, set up issue 4 with details to write up `DESCRIPTION` file
-        - Template
-        - List
-          - Title
-            - make this title short, not the title of the thesis
-          - Description
-            - Brief and to the point describing what’s in the data
-          - Contributors (name, email, role, ORCID)
-            - Include everyone here
-            - Roles
-              - cre = maintainer
-              - aut = significant contributions
-              - ctb = contributor with smaller contributions
-        - Resource
-          - https://r-pkgs.org/description.html
-    21. Add dependencies (not optional if vignettes are used) -
-        `use_package("dplyr")` - `use_package("ggplot2", "Suggests")`
-2. Complete `DESCRIPTION` file by executing in Console: `washr::update_description()`
-3. - Add author(s): `use_author(   given = "Lars",   family = "Schöbitz",   role = c("aut", "cre"),   email = "lschoebitz(at)ethz.ch",   comment = c(ORCID = "0000-0003-2196-5015") )`
-4. Use `devtools` to load, document, check, and install - Use
-        keyboard shortcuts
-        - `devtools::load_all()` “Cmd + Shift + L”
-        - `devtools::document()` “Cmd + Shift + D”
-        - `devtools::check()` “Cmd + Shift + E”
-        - `devtools::install()` “Cmd + Shift + B”
+1. On GitHub, set up issue 4 with details to write up author information for `DESCRIPTION` file
+   - Contributors (name, email, role, ORCID)
+     - Include everyone here
+       - Roles
+         - cre = maintainer
+         - aut = significant contributions
+         - ctb = contributor with smaller contributions
+    - Resource
+      - https://r-pkgs.org/description.html
+    - Add author(s): `use_author(given = "Lars", family = "Schöbitz", role = c("aut", "cre"), email = "lschoebitz(at)ethz.ch", comment = c(ORCID = "0000-0003-2196-5015"))`
+2. Add dependencies (not optional if vignettes are used)
+   - `use_package("dplyr")`
+   - `use_package("ggplot2", "Suggests")`
+4. Complete `DESCRIPTION` file by executing in Console: `washr::update_description()`
+6. Use `devtools` to load, document, check, and install
+   - Use keyboard shortcuts
+      - `devtools::load_all()` “Cmd + Shift + L”
+      - `devtools::document()` “Cmd + Shift + D”
+      - `devtools::check()` “Cmd + Shift + E”
+      - `devtools::install()` “Cmd + Shift + B”
    
 ### README
 
@@ -126,32 +121,32 @@
             - ) \|\>
             - knitr::kable()
           - `devtools::build_readme()`
-2. Add, commit and push all changes to GitHub - On GitHub, open
-        issue 5 to define who writes up which parts of the README
-3. Create an examples article for the package -
-        `usethis::use_article("examples")` -
-        `devtools::build_rmd("vignettes/articles/examples.Rmd")` -
-        Resources
-        - https://r-pkgs.org/vignettes.html#sec-vignettes-workflow-writing
-          - Prepare one or two data visualisation or table examples
-4. Add formal dependencies from Vignette (not necessary for article
+2. Add, commit and push all changes to GitHub - On GitHub, open issue 5 to define who writes up which parts of the README
+3. Create an examples article for the package
+   - `usethis::use_article("examples")`
+   - `devtools::build_rmd("vignettes/articles/examples.Rmd")`
+   - Resources
+      - https://r-pkgs.org/vignettes.html#sec-vignettes-workflow-writing
+      - Prepare one or two data visualisation or table examples
+5. Add formal dependencies from Vignette (not necessary for article
         vignette?) - Any package used in a vignette must be a formal
         dependency, i.e. it must be listed in Imports or Suggests in
         DESCRIPTION
         - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
-5. Use `devtools` to load, document, check, and install - Use
+6. Use `devtools` to load, document, check, and install - Use
         keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-6. Add automated CMD BUILD check -
+7. Add automated CMD BUILD check -
         `usethis::use_github_action_check_standard()?`
         - checks build for Mac, Windows, Linux
 ### Pkgdown Website
 1. Create new branch - `pkgdown`
-2. Setup pkgdown configuration and github actions -
-        `usethis::use_pkgdown` - open `_pkgdown.yml`
+2. Setup pkgdown configuration and github actions
+   -`usethis::use_pkgdown`
+   - open `_pkgdown.yml`
         - add github pages URL
         - add plausible script (plausible for openwashdata to be setup)
           - template:
@@ -159,9 +154,9 @@
             - includes:
               - in_header: \|
                 - <script defer data-domain="openwashdata.github.io" src="https://plausible.io/js/script.js"></script>
-3. Build pkgdown website - `pkgdown::build_site()`
-4. Add, commit and push all changes to GitHub
-5. Edit Home Index
+4. Build pkgdown website - `pkgdown::build_site()`
+5. Add, commit and push all changes to GitHub
+6. Edit Home Index
    - use this as template: https://github.com/Global-Health-Engineering/durbanplasticwaste/blob/main/\_pkgdown.yml
    - consider writing pkgdown template for this:https://github.com/openwashdata/book/issues/16
      - https://github.com/tidyverse/tidytemplate
