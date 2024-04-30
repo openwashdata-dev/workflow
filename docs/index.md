@@ -104,64 +104,24 @@
    
 ### README
 
-1. Create a rmd README for package - `usethis::use_readme_rmd()`
-        - Outline template
-          - https://github.com/Global-Health-Engineering/durbanplasticwaste22/blob/main/README.Rmd
-        - Write \[\[{openwashdata}\]\] R function to generate download
-          table from dictionary.csv
-          - read_csv(“data-raw/dictionary.csv”) \|\>
-            - distinct(file_name) \|\>
-            - mutate(file_name = str_remove(file_name, “.rda”)) \|\>
-            - rename(dataset = file_name) \|\>
-            - mutate(
-              - CSV = paste0(“[Download
-                CSV](%22,%20extdata_path,%20dataset, ".csv)"),
-              - XLSX = paste0(“[Download
-                XLSX](%22,%20extdata_path,%20dataset, ".xlsx)")
-            - ) \|\>
-            - knitr::kable()
-          - `devtools::build_readme()`
+1. Create a rmd README for package, in console, execute `washr::setup_readme()`. Enable `has_example=TRUE` to create an example article for the package.
 2. Add, commit and push all changes to GitHub - On GitHub, open issue 5 to define who writes up which parts of the README
-3. Create an examples article for the package
-   - `usethis::use_article("examples")`
-   - `devtools::build_rmd("vignettes/articles/examples.Rmd")`
-   - Resources
-      - https://r-pkgs.org/vignettes.html#sec-vignettes-workflow-writing
-      - Prepare one or two data visualisation or table examples
-5. Add formal dependencies from Vignette (not necessary for article
-        vignette?) - Any package used in a vignette must be a formal
-        dependency, i.e. it must be listed in Imports or Suggests in
-        DESCRIPTION
-        - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
-6. Use `devtools` to load, document, check, and install - Use
-        keyboard shortcuts
+5. Add formal dependencies from Vignette (not necessary for article vignette?)
+   - Any package used in a vignette must be a formal dependency, i.e. it must be listed in Imports or Suggests in DESCRIPTION
+   - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
+7. Use `devtools` to load, document, check, and install
+   - Use keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-7. Add automated CMD BUILD check -
-        `usethis::use_github_action_check_standard()?`
-        - checks build for Mac, Windows, Linux
+9. Add automated CMD BUILD check
+    - `usethis::use_github_action_check_standard()?`
+    - checks build for Mac, Windows, Linux
 ### Pkgdown Website
 1. Create new branch - `pkgdown`
-2. Setup pkgdown configuration and github actions
-   -`usethis::use_pkgdown`
-   - open `_pkgdown.yml`
-        - add github pages URL
-        - add plausible script (plausible for openwashdata to be setup)
-          - template:
-            - bootstrap: 5
-            - includes:
-              - in_header: \|
-                - <script defer data-domain="openwashdata.github.io" src="https://plausible.io/js/script.js"></script>
-4. Build pkgdown website - `pkgdown::build_site()`
+2. In console, run `washr::setup_website()` to create an openwashdata style pkgdown website 
 5. Add, commit and push all changes to GitHub
-6. Edit Home Index
-   - use this as template: https://github.com/Global-Health-Engineering/durbanplasticwaste/blob/main/\_pkgdown.yml
-   - consider writing pkgdown template for this:https://github.com/openwashdata/book/issues/16
-     - https://github.com/tidyverse/tidytemplate
-     - https://pkgdown.r-lib.org/articles/pkgdown.html#home-page
-     - explore: https://pkgdown.r-lib.org/articles/customise.html
           
 ## Package Release
 
@@ -230,3 +190,15 @@
    - Share with the data donators 
    - Examine and close any remain issues
    - (Optional) Transfer maintainer role when the developer can no longer maintain the package
+
+## Resources
+### readme
+ - https://r-pkgs.org/vignettes.html#sec-vignettes-workflow-writing
+      - Prepare one or two data visualisation or table examples
+### pkgdown
+Edit Home Index
+   - use this as template: https://github.com/Global-Health-Engineering/durbanplasticwaste/blob/main/\_pkgdown.yml
+   - consider writing pkgdown template for this:https://github.com/openwashdata/book/issues/16
+     - https://github.com/tidyverse/tidytemplate
+     - https://pkgdown.r-lib.org/articles/pkgdown.html#home-page
+     - explore: https://pkgdown.r-lib.org/articles/customise.html
