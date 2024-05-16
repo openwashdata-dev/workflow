@@ -60,15 +60,16 @@
     - Add, commit and push all changes to GitHub
     - On GitHub, open issue 1 for adding data to `data-raw/` folder
       - use an issue template (example: https://github.com/openwashdata/cbssuitabilityhaiti/issues/1#issue-1657507593)
-2.  Work on `data-raw/data_processing.R` to clean raw data and export tidy data
+2.  **Work on `data-raw/data_processing.R` to clean raw data and export tidy data**
 3.  Once data reaches tidy state, in Console, execute `washr::setup_dictionary()`
-  1. Fill the description in `dictionary.csv` for each dataset and variable
-4. Add, commit and push all changes to GitHub
-5. On GitHub, open issue 3 for cross-checking in with data donator for correct understanding of variables in `dictionary.csv`
-6. Initiate documentation folder for writing up metadata and documentation for objects
+    - Fill the description in `dictionary.csv` for each dataset and variable
+5. Add, commit and push all changes to GitHub
+6. On GitHub, open issue 3 for cross-checking in with data donator for correct understanding of variables in `dictionary.csv`
+7. Initiate documentation folder for writing up metadata and documentation for objects
    - Create new folder R: `usethis::use_r()`
-7. Write documentation in `\R` folder using \#\[\[{roxygen}\]\] comments by executing in console: `washr::setup_roxygen()`
-8. Add an additional package documentation to Package
+8. Write documentation in `\R` folder by executing in console: `washr::setup_roxygen()`
+   - Open each documentation file in `\R` to write a title and description 
+9. Add an additional package documentation to Package
    - `usethis::use_package_doc()`
    - If data documentation name is the same as package name, then add the following to the \*-package.R file
    - \#’ @aliases testduplicate-package
@@ -77,7 +78,7 @@
           - https://github.com/tidymodels/hardhat/issues/130#issuecomment-622438758
       - Resource
           - https://roxygen2.r-lib.org/articles/rd-other.html#datasets
-9. Add, commit and push all changes to GitHub
+10. Add, commit and push all changes to GitHub
     
 ## Complete package needed files
 ### DESCRIPTION
@@ -104,8 +105,9 @@
    
 ### README
 
-1. Create a rmd README for package, in console, execute `washr::setup_readme()`. Enable `has_example=TRUE` to create an example article for the package.
-2. Add, commit and push all changes to GitHub - On GitHub, open issue 5 to define who writes up which parts of the README
+1. Create a rmd README for package, in console, execute `washr::setup_readme()`.
+   - Enable `has_example=TRUE` to create an example article for the package.
+3. Add, commit and push all changes to GitHub - On GitHub, open issue 5 to define who writes up which parts of the README
 5. Add formal dependencies from Vignette (not necessary for article vignette?)
    - Any package used in a vignette must be a formal dependency, i.e. it must be listed in Imports or Suggests in DESCRIPTION
    - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
@@ -115,16 +117,16 @@
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-9. Add automated CMD BUILD check
-    - `usethis::use_github_action_check_standard()?`
-    - checks build for Mac, Windows, Linux
+
 ### Pkgdown Website
 1. Create new branch - `pkgdown`
 2. In console, run `washr::setup_website()` to create an openwashdata style pkgdown website 
 5. Add, commit and push all changes to GitHub
           
 ## Package Release
-
+1. Add automated CMD BUILD check
+    - `usethis::use_github_action_check_standard()?`
+    - checks build for Mac, Windows, Linux
 1.  **Open Zenodo**
     - login with GitHub account
     - click on dropdown next to email address in top right
