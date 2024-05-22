@@ -17,11 +17,8 @@
         - Detailed description
             - Example: The goal of `grdwtrsmpkwale` is to provide datasets for research and planning of water and solid waste management in Kwale, Kenya. This package includes water anlaysis data collected in 2016 combined with the geospatial data from the collection points.
 2.  **Open GitHub**
-    1.  If data donator has not opened an issue on [openwashdata/data
-        issue tracker](https://github.com/openwashdata/data/issues), do
-        it yourself
-    2.  Decide on a name for the repository and corresponding R data
-        package
+    1.  If data donator has not opened an issue on [openwashdata/data issue tracker](https://github.com/openwashdata/data/issues), do it yourself
+    2.  Decide on a name for the repository and corresponding R data package
     3.  Create a new repository with the following settings
         - Public
         - Do **not** add a README
@@ -31,9 +28,10 @@
     5.  Inform contributor that they need to accept the invitation to
         contribute (probably by Email)
 3.  **Open RStudio IDE**
-    1.  Check if R Packages \[\[{devtools}\]\] and \[\[{usethis}\]\] are
+    1. Install openwashdata R package - `devtools::install_github("openwashdata/washr")`
+    2. Check if R Packages \[\[{devtools}\]\] and \[\[{usethis}\]\] are
         installed. Install, if they are not.
-    2.  Create a new project using the R Package \[\[{devtools}\]\]
+    3.  Create a new project using the R Package \[\[{devtools}\]\]
         template and the same name you used on GitHub
         - If project folder already exists, open it and use
           - `usethis::create_package(".")`
@@ -41,18 +39,18 @@
           - File -\> New Project -\> New Directory -\> R Package using
             devtools -\> Choose directory name and location of
             sub-directory
-    3.  Add git version control to local directory
+    4.  Add git version control to local directory
         - In Console, execute
           - `library(usethis)`
           - `use_git()`
             - yes, commit
             - yes, restart
-    4.  Connect remote repository on GitHub with local repository
+    5.  Connect remote repository on GitHub with local repository
         - `git remote add origin URL`
         - `git branch -M main`
         - `git push -u origin main`
    
-    5. Install openwashdata R package - `devtools::install_github("openwashdata/washr")`
+    
 
 ## Data Cleaning
 1. Add directory for raw-data to project
@@ -65,9 +63,7 @@
     - Fill the description in `dictionary.csv` for each dataset and variable
 5. Add, commit and push all changes to GitHub
 6. On GitHub, open issue 3 for cross-checking in with data donator for correct understanding of variables in `dictionary.csv`
-7. Initiate documentation folder for writing up metadata and documentation for objects
-   - Create new folder R: `usethis::use_r()`
-8. Write documentation in `\R` folder by executing in console: `washr::setup_roxygen()`
+7. Initiatie and write documentation in `\R` folder by executing in console: `washr::setup_roxygen()`
    - Open each documentation file in `\R` to write a title and description 
 9. Add an additional package documentation to Package
    - `usethis::use_package_doc()`
@@ -111,17 +107,17 @@
 5. Add formal dependencies from Vignette (not necessary for article vignette?)
    - Any package used in a vignette must be a formal dependency, i.e. it must be listed in Imports or Suggests in DESCRIPTION
    - https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option
-7. Use `devtools` to load, document, check, and install
+
+### Pkgdown Website
+1. Create new branch - `pkgdown`
+2. In console, run `washr::setup_website()` to create an openwashdata style pkgdown website
+3. Use `devtools` to load, document, check, and install
    - Use keyboard shortcuts
         - `devtools::load_all()` “Cmd + Shift + L”
         - `devtools::document()` “Cmd + Shift + D”
         - `devtools::check()` “Cmd + Shift + E”
         - `devtools::install()` “Cmd + Shift + B”
-
-### Pkgdown Website
-1. Create new branch - `pkgdown`
-2. In console, run `washr::setup_website()` to create an openwashdata style pkgdown website 
-5. Add, commit and push all changes to GitHub
+4. Add, commit and push all changes to GitHub
           
 ## Package Release
 1. Add automated CMD BUILD check
@@ -153,11 +149,7 @@
           - is compiled/created by this upload
           - Dataset
       - Get the DOI
-2. Add `CITATION.cff`
-        - use the \[\[{cffr}\]\] Package once the Description file is complete
-        - current \#gist to be turned into a function for \[\[{openwashdata}\]\] R package
-          - https://gist.github.com/larnsce/dccdb26762837618c6dda82a5614b584
-        - needs doi parameter, which will only be used after first release to Zenodo
+2. Add `CITATION.cff` by executing `washr::update_citation()`
 3.  **Open RStudio IDE**
     - Add DOI badge to repository README.md
     - Edit DESCRIPTION
